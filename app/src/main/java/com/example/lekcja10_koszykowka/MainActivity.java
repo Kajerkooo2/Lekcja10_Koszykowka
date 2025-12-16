@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -32,17 +33,22 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        binding.textView.setText("0");
+
 
         punktyViewModel = new ViewModelProvider(this).get((PunktyViewModel.class));
 
+        punktyViewModel.getPunkty().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer value) {
+                binding.textView.setText(String.valueOf(value != null ? value : 0));
+            }
+        });
 
         binding.button1.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         punktyViewModel.addPunkty(1);
-                        binding.textView.setText(""+ punktyViewModel.getPunkty());
                     }
                 }
         );
@@ -51,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         punktyViewModel.addPunkty(2);
-                        binding.textView.setText(""+ punktyViewModel.getPunkty());
                     }
                 }
         );
@@ -60,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         punktyViewModel.addPunkty(3);
-                        binding.textView.setText(""+ punktyViewModel.getPunkty());
                     }
                 }
         );
