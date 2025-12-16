@@ -1,49 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="120sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf = "@id/button"
+        app:layout_constraintGuide_percent="0.5"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/teamA"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        >
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+1"
-        app:layout_constraintStart_toEndOf="@id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf = "parent"
-        app:layout_constraintBottom_toTopOf="@id/button2"/>
+        <TextView
+            android:id="@+id/scoreA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="80sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"/>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+2"
-        app:layout_constraintStart_toStartOf="@id/button"
-        app:layout_constraintTop_toBottomOf="@id/button"
-        app:layout_constraintBottom_toTopOf="@id/button3"
-        />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+3"
-        app:layout_constraintStart_toStartOf="@id/button"
-        app:layout_constraintTop_toBottomOf="@id/button2"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+            <Button
+                android:id="@+id/plus1A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+1"
+                android:layout_margin="6dp"/>
+
+            <Button
+                android:id="@+id/plus2A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+2"
+                android:layout_margin="6dp"/>
+
+            <Button
+                android:id="@+id/plus3A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+3"
+                android:layout_margin="6dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/teamB"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/scoreB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="80sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/plus1B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+1"
+                android:layout_margin="6dp"/>
+
+            <Button
+                android:id="@+id/plus2B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+2"
+                android:layout_margin="6dp"/>
+
+            <Button
+                android:id="@+id/plus3B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+3"
+                android:layout_margin="6dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

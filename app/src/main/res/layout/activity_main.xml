@@ -1,50 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.5"
+        android:orientation="vertical" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/scoreA"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="0"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="100sp"
+        android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button1"
-        android:textSize="120sp"/>
+        app:layout_constraintBottom_toTopOf="@+id/plus1A"
+        app:layout_constraintVertical_bias="0.2" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/plus1A"
         android:layout_width="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView"
-        app:layout_constraintBottom_toTopOf="@id/button2"
         android:layout_height="wrap_content"
-        android:text="+1" />
+        android:text="+1"
+        app:layout_constraintTop_toBottomOf="@id/scoreA"
+        app:layout_constraintStart_toStartOf="@id/scoreA"
+        app:layout_constraintEnd_toEndOf="@id/scoreA"
+        android:layout_marginTop="8dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/plus2A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/button1"
-        app:layout_constraintTop_toBottomOf="@id/button1"
-        app:layout_constraintBottom_toTopOf="@id/button3"
-        android:text="+2" />
+        android:text="+2"
+        app:layout_constraintTop_toBottomOf="@id/plus1A"
+        app:layout_constraintStart_toStartOf="@id/plus1A"
+        app:layout_constraintEnd_toEndOf="@id/plus1A"
+        android:layout_marginTop="8dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/plus3A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/button2"
-        app:layout_constraintStart_toStartOf="@id/button1"
+        android:text="+3"
+        app:layout_constraintTop_toBottomOf="@id/plus2A"
+        app:layout_constraintStart_toStartOf="@id/plus2A"
+        app:layout_constraintEnd_toEndOf="@id/plus2A"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="+3" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/scoreB"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="100sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/plus1B"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <Button
+        android:id="@+id/plus1B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+1"
+        app:layout_constraintTop_toBottomOf="@id/scoreB"
+        app:layout_constraintStart_toStartOf="@id/scoreB"
+        app:layout_constraintEnd_toEndOf="@id/scoreB"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/plus2B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+2"
+        app:layout_constraintTop_toBottomOf="@id/plus1B"
+        app:layout_constraintStart_toStartOf="@id/plus1B"
+        app:layout_constraintEnd_toEndOf="@id/plus1B"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/plus3B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+3"
+        app:layout_constraintTop_toBottomOf="@id/plus2B"
+        app:layout_constraintStart_toStartOf="@id/plus2B"
+        app:layout_constraintEnd_toEndOf="@id/plus2B"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
