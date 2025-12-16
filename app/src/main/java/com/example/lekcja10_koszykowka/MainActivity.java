@@ -9,64 +9,52 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.lekcja10_koszykowka.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding; //klasa z bindowanymi widokami
-    //dla pliku acitivtymain.xml jest ActivityMainBinding
-    PunktyViewModel punktyViewModel;
+    private ActivityMainBinding binding;
+    private PunktyViewModel punktyViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        punktyViewModel = new ViewModelProvider(this).get(PunktyViewModel.class);
 
-
-        punktyViewModel = new ViewModelProvider(this).get((PunktyViewModel.class));
-
-        punktyViewModel.getPunkty().observe(this, new Observer<Integer>() {
+        punktyViewModel.getPunktyA().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer value) {
-                binding.textView.setText(String.valueOf(value != null ? value : 0));
+                binding.scoreA.setText(String.valueOf(value != null ? value : 0));
             }
         });
 
-        binding.button1.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        punktyViewModel.addPunkty(1);
-                    }
-                }
-        );
-        binding.button2.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        punktyViewModel.addPunkty(2);
-                    }
-                }
-        );
-        binding.button3.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        punktyViewModel.addPunkty(3);
-                    }
-                }
-        );
+        punktyViewModel.getPunktyB().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer value) {
+                binding.scoreB.setText(String.valueOf(value != null ? value : 0));
+            }
+        });
+
+        binding.plus1A.setOnClickListener(v -> punktyViewModel.addPunktyA(1));
+        binding.plus2A.setOnClickListener(v -> punktyViewModel.addPunktyA(2));
+        binding.plus3A.setOnClickListener(v -> punktyViewModel.addPunktyA(3));
+
+        binding.plus1B.setOnClickListener(v -> punktyViewModel.addPunktyB(1));
+        binding.plus2B.setOnClickListener(v -> punktyViewModel.addPunktyB(2));
+        binding.plus3B.setOnClickListener(v -> punktyViewModel.addPunktyB(3));
+
     }
 }
