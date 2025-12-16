@@ -5,29 +5,53 @@ import androidx.lifecycle.ViewModel;
 
 public class PunktyViewModel extends ViewModel {
 
-    private MutableLiveData<Integer> punkty;
+    private MutableLiveData<Integer> punktyA;
+    private MutableLiveData<Integer> punktyB;
 
-    public MutableLiveData<Integer> getPunkty() {
-        if(punkty == null){
-            punkty = new MutableLiveData<>();
-            punkty.setValue(0);
+    public MutableLiveData<Integer> getPunktyA() {
+        if (punktyA == null) {
+            punktyA = new MutableLiveData<>();
+            punktyA.setValue(0);
         }
-        return punkty;
+        return punktyA;
     }
 
-    public void setPunkty(MutableLiveData<Integer> punkty) {
-        if(punkty == null){
-            punkty = new MutableLiveData<>();
+    public MutableLiveData<Integer> getPunktyB() {
+        if (punktyB == null) {
+            punktyB = new MutableLiveData<>();
+            punktyB.setValue(0);
         }
-        this.punkty = punkty;
+        return punktyB;
     }
 
-    public void addPunkty(int p){
-        if(punkty == null){
-            punkty = new MutableLiveData<>();
-            punkty.setValue(0);
+    public void addPunktyA(int p) {
+        if (punktyA == null) {
+            punktyA = new MutableLiveData<>();
+            punktyA.setValue(0);
         }
-        int aktualne_punkty = punkty.getValue();
-        punkty.setValue(aktualne_punkty+p);
+        Integer aktualne = punktyA.getValue();
+        if (aktualne == null) aktualne = 0;
+        punktyA.setValue(aktualne + p);
     }
+
+    public void addPunktyB(int p) {
+        if (punktyB == null) {
+            punktyB = new MutableLiveData<>();
+            punktyB.setValue(0);
+        }
+        Integer aktualne = punktyB.getValue();
+        if (aktualne == null) aktualne = 0;
+        punktyB.setValue(aktualne + p);
+    }
+
+    public void resetA() {
+        if (punktyA == null) punktyA = new MutableLiveData<>();
+        punktyA.setValue(0);
+    }
+
+    public void resetB() {
+        if (punktyB == null) punktyB = new MutableLiveData<>();
+        punktyB.setValue(0);
+    }
+
 }
