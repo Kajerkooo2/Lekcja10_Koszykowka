@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding; //klasa z bindowanymi widokami
     //dla pliku acitivtymain.xml jest ActivityMainBinding
+    private int punkty;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,5 +31,33 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         binding.textView.setText("0");
+
+        binding.button1.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        punkty++;
+                        binding.textView.setText(""+punkty);
+                    }
+                }
+        );
+        binding.button2.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        punkty+=2;
+                        binding.textView.setText(""+punkty);
+                    }
+                }
+        );
+        binding.button3.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        punkty+=3;
+                        binding.textView.setText(""+punkty);
+                    }
+                }
+        );
     }
 }
