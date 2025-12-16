@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.lekcja10_koszykowka.databinding.ActivityMainBinding;
 
@@ -15,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding; //klasa z bindowanymi widokami
     //dla pliku acitivtymain.xml jest ActivityMainBinding
-    private int punkty;
+    PunktyViewModel punktyViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +34,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
         binding.textView.setText("0");
 
+        punktyViewModel = new ViewModelProvider(this).get((PunktyViewModel.class));
+
+
         binding.button1.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        punkty++;
-                        binding.textView.setText(""+punkty);
+                        punktyViewModel.addPunkty(1);
+                        binding.textView.setText(""+ punktyViewModel.getPunkty());
                     }
                 }
         );
@@ -45,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        punkty+=2;
-                        binding.textView.setText(""+punkty);
+                        punktyViewModel.addPunkty(2);
+                        binding.textView.setText(""+ punktyViewModel.getPunkty());
                     }
                 }
         );
@@ -54,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        punkty+=3;
-                        binding.textView.setText(""+punkty);
+                        punktyViewModel.addPunkty(3);
+                        binding.textView.setText(""+ punktyViewModel.getPunkty());
                     }
                 }
         );
